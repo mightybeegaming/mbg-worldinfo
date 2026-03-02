@@ -1,0 +1,6 @@
+version=1
+id=3676979895
+title=MBG World Info
+description=Get current world information.
+tags=Build 42
+visibility=unlisted
