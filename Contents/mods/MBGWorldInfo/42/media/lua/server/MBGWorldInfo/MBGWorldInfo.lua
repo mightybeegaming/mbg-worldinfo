@@ -15,7 +15,7 @@ local function getInGameDateTime()
     if gt then
         local year  = gt:getYear()
         local month = gt:getMonth() + 1
-        local day   = gt:getDay()
+        local day   = gt:getDay() + 1
         local hour  = gt:getHour()
         local minute = gt:getMinutes()
         return string.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
