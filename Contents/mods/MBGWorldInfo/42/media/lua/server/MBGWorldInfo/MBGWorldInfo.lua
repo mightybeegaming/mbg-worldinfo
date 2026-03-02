@@ -29,11 +29,11 @@ local function getInGameWeather()
     local climateInstance = ClimateManager.getInstance()
     local isSnowing = climateInstance:isSnowing()
     local isRaining = climateInstance:isRaining()
-	local rainIntensity = climateInstance:getRainIntensity()
-	local cloudIntensity = climateInstance:getCloudIntensity()
-	local fogIntensity = climateInstance:getFogIntensity()
-	local windSpeed = climateInstance:getWindspeedKph()
-	local temp = climateInstance:getTemperature()
+	local rainIntensity = tonumber(climateInstance:getRainIntensity()) or 0
+	local cloudIntensity = tonumber(climateInstance:getCloudIntensity()) or 0
+	local fogIntensity = tonumber(climateInstance:getFogIntensity()) or 0
+	local windSpeed = tonumber(climateInstance:getWindspeedKph()) or 0
+	local temp = tonumber(climateInstance:getTemperature()) or 0
 
     -- Weather
 	local condition = "Clear"
@@ -64,13 +64,13 @@ local function getInGameWeather()
     -- Wind Type
     local windDesc = ""
     if windSpeed > 40 then
-        windDesc = "(Strong Wind)"
+        windDesc = " (Strong Wind)"
     elseif windSpeed > 20 then
-        windDesc = "(Windy)"
+        windDesc = " (Windy)"
     end
 
     return string.format(
-        "%s %s | %.1f°C",
+        "%s%s | %.1f",
         condition,
         windDesc,
         temp
