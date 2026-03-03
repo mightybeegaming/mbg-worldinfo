@@ -1,19 +1,23 @@
 print("[MBGWorldInfo] loaded")
 
-
 -- World Age
 local function getWorldAgeDays()
 	local gameTime = getGameTime()
+
+    -- if not gameTime then return end
+
 	local ageHours = gameTime:getWorldAgeHours()
 	local ageDays = ageHours / 24
 	
 	return math.floor(ageDays)
 end
 
-
 -- In-game Date Time
 local function getInGameDateTime()
     local gameTime = getGameTime()
+    
+    -- if not gameTime then return end
+
 	local year = gameTime:getYear()
 	local month = gameTime:getMonth() + 1
 	local day = gameTime:getDay() + 1
@@ -23,12 +27,14 @@ local function getInGameDateTime()
 	return string.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
 end
 
-
 -- In-game Weather
 local function getInGameWeather()
     local climateInstance = ClimateManager.getInstance()
-    local isSnowing = climateInstance:isSnowing()
-    local isRaining = climateInstance:isRaining()
+
+    -- if not climateInstance then return end
+
+    local isSnowing = climateInstance:isSnowing() or false
+    local isRaining = climateInstance:isRaining() or false
 	local rainIntensity = tonumber(climateInstance:getRainIntensity()) or 0
 	local cloudIntensity = tonumber(climateInstance:getCloudIntensity()) or 0
 	local fogIntensity = tonumber(climateInstance:getFogIntensity()) or 0
@@ -77,8 +83,9 @@ local function getInGameWeather()
     )
 end
 
-
 -- Start Print
+-- if not isServer() then return end
+
 local lastPrintTime = os.time()
 local interval = 10
 
