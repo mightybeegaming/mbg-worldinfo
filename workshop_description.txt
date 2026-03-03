@@ -1,0 +1,27 @@
+A mod that prints World Age, Date Time, Weather in the server console.
+
+[hr][/hr]
+[b]Snow[/b]
+- Snow+ = Blizzard
+- Snow = Normal Snow
+
+[b]Rain[/b]
+- Rain++ = Heavy Rain
+- Rain+ = Normal Rain
+- Rain = Light Rain
+
+[b]Cloud[/b]
+- Cloud+ = Overcast
+- Cloud = Cloudy
+
+[b]Fog[/b]
+- Fog+ = Heavy Fog
+- Fog = Foggy
+
+[b]Wind[/b]
+- Wind+ = Strong Wind
+- Wind = Windy
+
+[hr][/hr]
+Workshop ID: 3676979895
+Mod ID: MBGWorldInfo
