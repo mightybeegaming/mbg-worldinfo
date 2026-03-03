@@ -46,7 +46,7 @@ local function getInGameWeather()
 	local temp = tonumber(climateInstance:getTemperature()) or 0
 
     -- Weather
-	local condition = "Clear"
+    local condition = "Clear"
     if isSnowing then
         if rainIntensity > 0.6 then
             condition = "Blizzard"
@@ -61,25 +61,36 @@ local function getInGameWeather()
         else
             condition = "Light Rain"
         end
-    elseif fogIntensity > 0.5 then
-        condition = "Heavy Fog"
-    elseif fogIntensity > 0.2 then
-        condition = "Foggy"
     elseif cloudIntensity > 0.6 then
         condition = "Overcast"
     elseif cloudIntensity > 0.3 then
         condition = "Cloudy"
     end
+	
+	-- Modifiers
+	local modifiersList = {}
 
-    -- Wind Type
-    local windDesc = ""
-    if windSpeed > 40 then
-        windDesc = " (Strong Wind)"
-    elseif windSpeed > 20 then
-        windDesc = " (Windy)"
-    end
+	-- Fog Type
+	if fogIntensity > 0.5 then
+		table.insert(modifiersList, "Heavy Fog")
+	elseif fogIntensity > 0.2 then
+		table.insert(modifiersList, "Foggy")
+	end
+	
+	-- Wind Type
+	if windSpeed > 40 then
+		table.insert(modifiersList, "Strong Wind")
+	elseif windSpeed > 20 then
+		table.insert(modifiersList, "Windy")
+	end
 
-    return string.format("%s%s | %.1f", condition, windDesc, temp)
+	local modifiers = ""
+	if #modifiersList > 0 then
+		modifiers = table.concat(modifiersList, ", ")
+		modifiers = " (" .. modifiers .. ")"
+	end
+
+	return string.format("%s%s | %.1f", condition, modifiers, temp)
 end
 
 -- Start Print
