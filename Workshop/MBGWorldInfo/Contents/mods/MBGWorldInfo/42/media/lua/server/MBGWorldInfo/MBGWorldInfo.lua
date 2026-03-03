@@ -49,22 +49,22 @@ local function getInGameWeather()
     local condition = "Clear"
     if isSnowing then
         if rainIntensity > 0.6 then
-            condition = "Blizzard"
+            condition = "Snow+"
         else
-            condition = "Snowing"
+            condition = "Snow"
         end
     elseif isRaining then
         if rainIntensity > 0.7 then
-            condition = "Heavy Rain"
+            condition = "Rain++"
         elseif rainIntensity > 0.3 then
-            condition = "Rain"
+            condition = "Rain+"
         else
-            condition = "Light Rain"
+            condition = "Rain"
         end
     elseif cloudIntensity > 0.6 then
-        condition = "Overcast"
+        condition = "Cloud+"
     elseif cloudIntensity > 0.3 then
-        condition = "Cloudy"
+        condition = "Cloud"
     end
 	
 	-- Modifiers
@@ -72,16 +72,16 @@ local function getInGameWeather()
 
 	-- Fog Type
 	if fogIntensity > 0.5 then
-		table.insert(modifiersList, "Heavy Fog")
+		table.insert(modifiersList, "Fog+")
 	elseif fogIntensity > 0.2 then
-		table.insert(modifiersList, "Foggy")
+		table.insert(modifiersList, "Fog")
 	end
 	
 	-- Wind Type
 	if windSpeed > 40 then
-		table.insert(modifiersList, "Strong Wind")
+		table.insert(modifiersList, "Wind+")
 	elseif windSpeed > 20 then
-		table.insert(modifiersList, "Windy")
+		table.insert(modifiersList, "Wind")
 	end
 
 	local modifiers = ""
