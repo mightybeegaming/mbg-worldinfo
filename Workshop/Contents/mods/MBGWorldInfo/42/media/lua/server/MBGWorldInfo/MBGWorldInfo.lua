@@ -6,7 +6,7 @@ local function getWorldAgeDays()
 
     -- if not gameTime then return end
 
-	local ageHours = gameTime:getWorldAgeHours()
+	local ageHours = tonumber(gameTime:getWorldAgeHours()) or 0
 	local ageDays = ageHours / 24
 	
 	return math.floor(ageDays)
@@ -18,11 +18,15 @@ local function getInGameDateTime()
     
     -- if not gameTime then return end
 
-	local year = gameTime:getYear()
-	local month = gameTime:getMonth() + 1
-	local day = gameTime:getDay() + 1
-	local hour = gameTime:getHour()
-	local minute = gameTime:getMinutes()
+	local year = tonumber(gameTime:getYear()) or 0
+	local month = tonumber(gameTime:getMonth()) or 0
+	local day = tonumber(gameTime:getDay()) or 0
+	local hour = tonumber(gameTime:getHour()) or 0
+	local minute = tonumber(gameTime:getMinutes()) or 0
+
+    -- Adjustments
+    month = month + 1
+    day = day + 1
 	
 	return string.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
 end
@@ -86,12 +90,12 @@ end
 -- Start Print
 -- if not isServer() then return end
 
-local lastPrintTime = os.time()
+local lastPrintTime = tonumber(os.time()) or 0
 local interval = 10
 
 -- Print Interval
 Events.OnTick.Add(function()
-	local now = os.time()
+	local now = tonumber(os.time()) or 0
 	
 	if now - lastPrintTime < interval then return end
 	
