@@ -56,7 +56,7 @@ local function getInGameWeather()
     elseif isRaining then
         if rainIntensity > 0.7 then
             condition = "Heavy Rain"
-        elseif rain > 0.3 then
+        elseif rainIntensity > 0.3 then
             condition = "Rain"
         else
             condition = "Light Rain"
@@ -79,12 +79,7 @@ local function getInGameWeather()
         windDesc = " (Windy)"
     end
 
-    return string.format(
-        "%s%s | %.1f",
-        condition,
-        windDesc,
-        temp
-    )
+    return string.format("%s%s | %.1f", condition, windDesc, temp)
 end
 
 -- Start Print
