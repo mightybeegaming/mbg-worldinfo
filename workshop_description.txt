@@ -1,5 +1,9 @@
 A mod that prints World Age, Date Time, Weather in the server console.
 
+This tool is created mainly for [url=https://mbgplayground.xyz/projectzomboid]MBG Project Zomboid[/url] server metrics.
+
+Github - [url=https://github.com/mightybeegaming/mbg-worldinfo]MBGWorldInfo[/url]
+
 [hr][/hr]
 [b]Snow[/b]
 - Snow+ = Blizzard
