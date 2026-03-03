@@ -1,6 +1,6 @@
 version=1
 id=3676979895
 title=MBG World Info
-description=Get current world information.
+description=A mod that prints World Age, Date Time, Weather in the server console.
 tags=Build 42
 visibility=unlisted
