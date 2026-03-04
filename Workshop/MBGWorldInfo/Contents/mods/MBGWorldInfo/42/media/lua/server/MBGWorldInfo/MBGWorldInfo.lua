@@ -1,9 +1,9 @@
-print("[MBGWorldInfo] loaded")
+print('[MBGWorldInfo] loaded')
 
 -- World Age
 local function getWorldAgeDays()
 	local gameTime = getGameTime()
-	local ageHours = tonumber(gameTime:getWorldAgeHours()) or 0
+	local ageHours = gameTime:getWorldAgeHours()
 	local ageDays = ageHours / 24
 	
 	local worldAgeDays = math.floor(ageDays)
@@ -14,17 +14,17 @@ end
 -- Date Time
 local function getDateTime()
     local gameTime = getGameTime()
-	local year = tonumber(gameTime:getYear()) or 0
-	local month = tonumber(gameTime:getMonth()) or 0
-	local day = tonumber(gameTime:getDay()) or 0
-	local hour = tonumber(gameTime:getHour()) or 0
-	local minute = tonumber(gameTime:getMinutes()) or 0
+	local year = gameTime:getYear()
+	local month = gameTime:getMonth()
+	local day = gameTime:getDay()
+	local hour = gameTime:getHour()
+	local minute = gameTime:getMinutes()
 
     -- Adjustments
     month = month + 1
     day = day + 1
 	
-	local dateTime = string.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
+	local dateTime = string.format('%04d-%02d-%02d %02d:%02d', year, month, day, hour, minute)
 	
 	return dateTime
 end
@@ -32,71 +32,75 @@ end
 -- Weather
 local function getWeather()
     local climateInstance = ClimateManager.getInstance()
-    local isSnowing = climateInstance:isSnowing() or false
-    local isRaining = climateInstance:isRaining() or false
-	local rainIntensity = tonumber(climateInstance:getRainIntensity()) or 0
-	local cloudIntensity = tonumber(climateInstance:getCloudIntensity()) or 0
-	local fogIntensity = tonumber(climateInstance:getFogIntensity()) or 0
-	local windSpeed = tonumber(climateInstance:getWindspeedKph()) or 0
-	local temp = tonumber(climateInstance:getTemperature()) or 0
+    local isSnowing = climateInstance:isSnowing()
+    local isRaining = climateInstance:isRaining()
+	local rainIntensity = climateInstance:getRainIntensity()
+	local cloudIntensity = climateInstance:getCloudIntensity()
+	local fogIntensity = climateInstance:getFogIntensity()
+	local windSpeed = climateInstance:getWindspeedKph()
+	local temp = climateInstance:getTemperature()
 
     -- Condition
-    local condition = "Clear"
+    local condition = 'Clear'
     if isSnowing then
         if rainIntensity > 0.6 then
-            condition = "Snow+"
+            condition = 'Snow+'
         else
-            condition = "Snow"
+            condition = 'Snow'
         end
     elseif isRaining then
         if rainIntensity > 0.7 then
-            condition = "Rain++"
+            condition = 'Rain++'
         elseif rainIntensity > 0.3 then
-            condition = "Rain+"
+            condition = 'Rain+'
         else
-            condition = "Rain"
+            condition = 'Rain'
         end
     elseif cloudIntensity > 0.6 then
-        condition = "Cloud+"
+        condition = 'Cloud+'
     elseif cloudIntensity > 0.3 then
-        condition = "Cloud"
+        condition = 'Cloud'
     end
 	
-	-- Modifiers
-	local modifiersList = {}
-
 	-- Fog Type
+	local fog = ''
 	if fogIntensity > 0.5 then
-		table.insert(modifiersList, "Fog+")
+		fog = 'Fog+'
 	elseif fogIntensity > 0.2 then
-		table.insert(modifiersList, "Fog")
+		fog = 'Fog'
 	end
 	
 	-- Wind Type
+	local wind = ''
 	if windSpeed > 40 then
-		table.insert(modifiersList, "Wind+")
+		wind = 'Wind+'
 	elseif windSpeed > 20 then
-		table.insert(modifiersList, "Wind")
+		wind = 'Wind'
 	end
 
-	local modifiers = ""
+	-- Modifiers
+	local modifiersList = {}
+	if fog ~= '' then table.insert(modifiersList, fog) end
+	if wind ~= '' then table.insert(modifiersList, wind) end
+
+	local modifiers = ''
 	if #modifiersList > 0 then
-		modifiers = table.concat(modifiersList, ", ")
-		modifiers = " (" .. modifiers .. ")"
+		modifiers = table.concat(modifiersList, ', ')
+		modifiers = ' (' .. modifiers .. ')'
 	end
 	
-	local weather = string.format("%s%s | %.1f", condition, modifiers, temp)
+	local weather = string.format('%s%s | %.1f', condition, modifiers, temp)
 
 	return weather
 end
 
 -- Start Printing
-local lastPrintTime = tonumber(os.time()) or 0
+local lastPrintTime = os.time()
 local interval = 10
 
 -- Print Interval
 Events.OnTick.Add(function()
-	local now = tonumber(os.time()) or 0
+	local now = os.time()
 	
 	if now - lastPrintTime < interval then return end
 	
@@ -106,7 +110,7 @@ Events.OnTick.Add(function()
 	local dateTime = getDateTime()
 	local weather = getWeather()
 	
-	print(string.format("[MBGWorldInfo] World Age: %d days", worldAgeDays))
-	print(string.format("[MBGWorldInfo] Date Time: %s", dateTime))
-	print(string.format("[MBGWorldInfo] Weather: %s", weather))
+	print(string.format('[MBGWorldInfo] World Age: %d days', worldAgeDays))
+	print(string.format('[MBGWorldInfo] Date Time: %s', dateTime))
+	print(string.format('[MBGWorldInfo] Weather: %s', weather))
 end)
