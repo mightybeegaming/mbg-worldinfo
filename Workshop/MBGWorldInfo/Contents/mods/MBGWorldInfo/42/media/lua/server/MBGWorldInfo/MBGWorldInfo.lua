@@ -3,21 +3,17 @@ print("[MBGWorldInfo] loaded")
 -- World Age
 local function getWorldAgeDays()
 	local gameTime = getGameTime()
-
-    -- if not gameTime then return end
-
 	local ageHours = tonumber(gameTime:getWorldAgeHours()) or 0
 	local ageDays = ageHours / 24
 	
-	return math.floor(ageDays)
+	local worldAgeDays = math.floor(ageDays)
+	
+	return worldAgeDays
 end
 
--- In-game Date Time
-local function getInGameDateTime()
+-- Date Time
+local function getDateTime()
     local gameTime = getGameTime()
-    
-    -- if not gameTime then return end
-
 	local year = tonumber(gameTime:getYear()) or 0
 	local month = tonumber(gameTime:getMonth()) or 0
 	local day = tonumber(gameTime:getDay()) or 0
@@ -28,15 +24,14 @@ local function getInGameDateTime()
     month = month + 1
     day = day + 1
 	
-	return string.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
+	local dateTime = string.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
+	
+	return dateTime
 end
 
--- In-game Weather
-local function getInGameWeather()
+-- Weather
+local function getWeather()
     local climateInstance = ClimateManager.getInstance()
-
-    -- if not climateInstance then return end
-
     local isSnowing = climateInstance:isSnowing() or false
     local isRaining = climateInstance:isRaining() or false
 	local rainIntensity = tonumber(climateInstance:getRainIntensity()) or 0
@@ -45,7 +40,7 @@ local function getInGameWeather()
 	local windSpeed = tonumber(climateInstance:getWindspeedKph()) or 0
 	local temp = tonumber(climateInstance:getTemperature()) or 0
 
-    -- Weather
+    -- Condition
     local condition = "Clear"
     if isSnowing then
         if rainIntensity > 0.6 then
@@ -89,13 +84,13 @@ local function getInGameWeather()
 		modifiers = table.concat(modifiersList, ", ")
 		modifiers = " (" .. modifiers .. ")"
 	end
+	
+	local weather = string.format("%s%s | %.1f", condition, modifiers, temp)
 
-	return string.format("%s%s | %.1f", condition, modifiers, temp)
+	return weather
 end
 
--- Start Print
--- if not isServer() then return end
-
+-- Start Printing
 local lastPrintTime = tonumber(os.time()) or 0
 local interval = 10
 
@@ -107,11 +102,11 @@ Events.OnTick.Add(function()
 	
 	lastPrintTime = now
 
-	local worldAge = getWorldAgeDays()
-	local dateTime = getInGameDateTime()
-	local weather = getInGameWeather()
+	local worldAgeDays = getWorldAgeDays()
+	local dateTime = getDateTime()
+	local weather = getWeather()
 	
-	print(string.format("[MBGWorldInfo] World Age: %d days", worldAge))
+	print(string.format("[MBGWorldInfo] World Age: %d days", worldAgeDays))
 	print(string.format("[MBGWorldInfo] Date Time: %s", dateTime))
 	print(string.format("[MBGWorldInfo] Weather: %s", weather))
 end)
