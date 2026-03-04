@@ -1,5 +1,5 @@
 # MBG World Info
-A Project Zomboid mod that prints **World Age**, **Date Time**, and **Weather** in server console.
+A Project Zomboid mod that prints **World Age**, **Date Time**, and **Weather** every 10 seconds in server console.
 
 This tool is created mainly for [MBG Project Zomboid](https://mbgplayground.xyz/projectzomboid) server metrics.
 
