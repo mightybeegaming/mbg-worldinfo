@@ -2,5 +2,5 @@ version=1
 id=3676979895
 title=MBG World Info
 description=A mod that prints World Age, Date Time, and Weather every 10 seconds in the server console.
-tags=Build 42
-visibility=unlisted
+tags=Build 42;Multiplayer
+visibility=public
