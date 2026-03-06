@@ -44,38 +44,38 @@ local function getWeather()
     local condition = 'Clear'
     if isSnowing then
         if rainIntensity > 0.6 then
-            condition = 'Snow+'
+            condition = 'Snowing+'
         else
-            condition = 'Snow'
+            condition = 'Snowing'
         end
     elseif isRaining then
         if rainIntensity > 0.7 then
-            condition = 'Rain++'
+            condition = 'Raining++'
         elseif rainIntensity > 0.3 then
-            condition = 'Rain+'
+            condition = 'Raining+'
         else
-            condition = 'Rain'
+            condition = 'Raining'
         end
     elseif cloudIntensity > 0.6 then
-        condition = 'Cloud+'
+        condition = 'Cloudy+'
     elseif cloudIntensity > 0.3 then
-        condition = 'Cloud'
+        condition = 'Cloudy'
     end
 	
 	-- Fog Type
 	local fog = ''
 	if fogIntensity > 0.5 then
-		fog = 'Fog+'
+		fog = 'Foggy+'
 	elseif fogIntensity > 0.2 then
-		fog = 'Fog'
+		fog = 'Foggy'
 	end
 	
 	-- Wind Type
 	local wind = ''
 	if windSpeed > 40 then
-		wind = 'Wind+'
+		wind = 'Windy+'
 	elseif windSpeed > 20 then
-		wind = 'Wind'
+		wind = 'Windy'
 	end
 
 	-- Modifiers

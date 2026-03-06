@@ -6,16 +6,16 @@ This tool is created mainly for [MBG Project Zomboid](https://mbgplayground.xyz/
 Steam Workshop - [MBG World Info](https://steamcommunity.com/sharedfiles/filedetails/?id=3676979895)
 
 ## Weather Labels
-| Weather   | Labels                |
-| -         | -                     |
-| **Snow**  | Snow+ = Blizzard      |
-|           | Snow = Normal Snow    |
-| **Rain**  | Rain++ = Heavy Rain   |
-|           | Rain+ = Normal Rain   |
-|           | Rain = Light Rain     |
-| **Cloud** | Cloud+ = Overcast     |
-|           | Cloud = Cloudy        |
-| **Fog**   | Fog+ = Heavy Fog      |
-|           | Fog = Foggy           |
-| **Wind**  | Wind+ = Strong Wind   |
-|           | Wind = Windy          |
+| Weather   | Labels    | Metrics           |
+|:-         |:-         |:-                 |
+| **Snow**  | Snowing+  | Intensity > 0.6   |
+|           | Snowing   | Intensity <= 0.6  |
+| **Rain**  | Raining++ | Intensity > 0.7   |
+|           | Raining+  | Intensity > 0.3   |
+|           | Raining   | Intensity <= 0.0  |
+| **Cloud** | Cloudy+   | Intensity > 0.6   |
+|           | Cloudy    | Intensity > 0.3   |
+| **Fog**   | Foggy+    | Intensity > 0.5   |
+|           | Foggy     | Intensity > 0.2   |
+| **Wind**  | Windy+    | Speed > 40        |
+|           | Windy     | Speed > 20        |

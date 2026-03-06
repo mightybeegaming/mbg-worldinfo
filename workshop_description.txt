@@ -6,25 +6,25 @@ Github - [url=https://github.com/mightybeegaming/mbg-worldinfo]MBG World Info[/u
 
 [hr][/hr]
 [b]Snow[/b]
-- Snow+ = Blizzard
-- Snow = Normal Snow
+- Snowing+ = Intensity > 0.6
+- Snowing = Intensity <= 0.6
 
 [b]Rain[/b]
-- Rain++ = Heavy Rain
-- Rain+ = Normal Rain
-- Rain = Light Rain
+- Raining++ = Intensity > 0.7
+- Raining+ = Intensity > 0.3
+- Raining = Intensity <= 0.3
 
 [b]Cloud[/b]
-- Cloud+ = Overcast
-- Cloud = Cloudy
+- Cloudy+ = Intensity > 0.6
+- Cloudy = Intensity > 0.3
 
 [b]Fog[/b]
-- Fog+ = Heavy Fog
-- Fog = Foggy
+- Foggy+ = Intensity > 0.5
+- Foggy = Intensity > 0.2
 
 [b]Wind[/b]
-- Wind+ = Strong Wind
-- Wind = Windy
+- Windy+ = Speed > 40
+- Windy = Speed > 20
 
 [hr][/hr]
 Workshop ID: 3676979895
