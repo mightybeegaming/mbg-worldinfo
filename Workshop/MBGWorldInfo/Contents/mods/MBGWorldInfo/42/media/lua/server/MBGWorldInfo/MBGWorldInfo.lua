@@ -24,7 +24,7 @@ local function getDateTime()
     month = month + 1
     day = day + 1
 	
-	local dateTime = string.format('%04d-%02d-%02d %02d:%02d', year, month, day, hour, minute)
+	local dateTime = string.format('%d/%d/%d|%d:%d', month, day, year, hour, minute)
 	
 	return dateTime
 end
@@ -112,7 +112,7 @@ Events.OnTick.Add(function()
 	local dateTime = getDateTime()
 	local weather = getWeather()
 	
-	print(string.format('[MBGWorldInfo] World Age: %d days', worldAge))
+	print(string.format('[MBGWorldInfo] World Age: %d', worldAge))
 	print(string.format('[MBGWorldInfo] Date Time: %s', dateTime))
 	print(string.format('[MBGWorldInfo] Weather: %s', weather))
 end)
