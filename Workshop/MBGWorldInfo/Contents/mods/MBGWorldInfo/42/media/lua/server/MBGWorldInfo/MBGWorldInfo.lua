@@ -91,7 +91,7 @@ local function getWeather()
 		modifiers = ' (' .. modifiers .. ')'
 	end
 	
-	local weather = string.format('%s%s | %.1f | %s', weather, modifiers, temperature, season)
+	local weather = string.format('%s%s|%.1f|%s', weather, modifiers, temperature, season)
 
 	return weather
 end
