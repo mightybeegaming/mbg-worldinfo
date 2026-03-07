@@ -1,14 +1,14 @@
 print('[MBGWorldInfo] loaded')
 
 -- World Age
-local function getWorldAgeDays()
+local function getWorldAge()
 	local gameTime = getGameTime()
-	local ageHours = gameTime:getWorldAgeHours()
-	local ageDays = ageHours / 24
+	local ageInHours = gameTime:getWorldAgeHours()
+	local ageInDays = ageInHours / 24
 	
-	local worldAgeDays = math.floor(ageDays)
+	local worldAgeInDays = math.floor(ageInDays)
 	
-	return worldAgeDays
+	return worldAgeInDays
 end
 
 -- Date Time
@@ -33,33 +33,35 @@ end
 local function getWeather()
     local climateInstance = ClimateManager.getInstance()
     local isSnowing = climateInstance:isSnowing()
+	local snowIntensity = climateInstance:getSnowIntensity()
     local isRaining = climateInstance:isRaining()
 	local rainIntensity = climateInstance:getRainIntensity()
 	local cloudIntensity = climateInstance:getCloudIntensity()
 	local fogIntensity = climateInstance:getFogIntensity()
 	local windSpeed = climateInstance:getWindspeedKph()
-	local temp = climateInstance:getTemperature()
-
-    -- Condition
-    local condition = 'Clear'
+	local temperature = climateInstance:getTemperature()
+	local season = climateInstance:getSeasonName()
+	
+    -- Weather
+    local weather = 'Clear'
     if isSnowing then
-        if rainIntensity > 0.6 then
-            condition = 'Snowing+'
+        if snowIntensity > 0.6 then
+            weather = 'Snowing+'
         else
-            condition = 'Snowing'
+            weather = 'Snowing'
         end
     elseif isRaining then
         if rainIntensity > 0.7 then
-            condition = 'Raining++'
+            weather = 'Raining++'
         elseif rainIntensity > 0.3 then
-            condition = 'Raining+'
+            weather = 'Raining+'
         else
-            condition = 'Raining'
+            weather = 'Raining'
         end
     elseif cloudIntensity > 0.6 then
-        condition = 'Cloudy+'
+        weather = 'Cloudy+'
     elseif cloudIntensity > 0.3 then
-        condition = 'Cloudy'
+        weather = 'Cloudy'
     end
 	
 	-- Fog Type
@@ -89,7 +91,7 @@ local function getWeather()
 		modifiers = ' (' .. modifiers .. ')'
 	end
 	
-	local weather = string.format('%s%s | %.1f', condition, modifiers, temp)
+	local weather = string.format('%s%s | %.1f | %s', weather, modifiers, temperature, season)
 
 	return weather
 end
@@ -106,11 +108,11 @@ Events.OnTick.Add(function()
 	
 	lastPrintTime = now
 
-	local worldAgeDays = getWorldAgeDays()
+	local worldAge = getWorldAge()
 	local dateTime = getDateTime()
 	local weather = getWeather()
 	
-	print(string.format('[MBGWorldInfo] World Age: %d days', worldAgeDays))
+	print(string.format('[MBGWorldInfo] World Age: %d days', worldAge))
 	print(string.format('[MBGWorldInfo] Date Time: %s', dateTime))
 	print(string.format('[MBGWorldInfo] Weather: %s', weather))
 end)
