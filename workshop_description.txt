@@ -1,10 +1,11 @@
+[h1]MBG World Info[/h1]
 A mod that prints [b]World Age[/b], [b]Date Time[/b], and [b]Weather[/b] every 10 seconds in the server console.
 
 This tool is created mainly for [url=https://mbgplayground.xyz/projectzomboid]MBG Project Zomboid[/url] server metrics.
 
 Github - [url=https://github.com/mightybeegaming/mbg-worldinfo]MBG World Info[/url]
 
-[hr][/hr]
+[h2]Weather Labels[/h2]
 [b]Snow[/b]
 - Snowing+ = Intensity > 0.6
 - Snowing = Intensity <= 0.6
@@ -26,6 +27,6 @@ Github - [url=https://github.com/mightybeegaming/mbg-worldinfo]MBG World Info[/u
 - Windy+ = Speed > 40
 - Windy = Speed > 20
 
-[hr][/hr]
+[h2]Workshop Details[/h2]
 Workshop ID: 3676979895
 Mod ID: MBGWorldInfo
