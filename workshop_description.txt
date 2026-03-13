@@ -6,36 +6,68 @@ This tool is created mainly for [url=https://mbgplayground.xyz/projectzomboid]MB
 Github - [url=https://github.com/mightybeegaming/mbg-worldinfo]MBG World Info[/url]
 
 [h2]Weather Labels[/h2]
-[b]Snow[/b]
-[list]
-[*]Snowing+ = Intensity > 0.6
-[*]Snowing = Intensity <= 0.6
-[/list]
-
-[b]Rain[/b]
-[list]
-[*]Raining++ = Intensity > 0.7
-[*]Raining+ = Intensity > 0.3
-[*]Raining = Intensity <= 0.3
-[/list]
-
-[b]Cloud[/b]
-[list]
-[*]Cloudy+ = Intensity > 0.6
-[*]Cloudy = Intensity > 0.3
-[/list]
-
-[b]Fog[/b]
-[list]
-[*]Foggy+ = Intensity > 0.5
-[*]Foggy = Intensity > 0.2
-[/list]
-
-[b]Wind[/b]
-[list]
-[*]Windy+ = Speed > 40
-[*]Windy = Speed > 20
-[/list]
+[table]
+    [tr]
+        [td][b]Weather[/b][/td]
+        [td][b]Labels[/b][/td]
+        [td][b]Metrics[/b][/td]
+    [/tr]
+    [tr]
+        [td][b]Snow[/b][/td]
+        [td]Snowing+[/td]
+        [td]Intensity > 0.6[/td]
+    [/tr]
+    [tr]
+        [td][/td]
+        [td]Snowing[/td]
+        [td]Intensity <= 0.6[/td]
+    [/tr]
+    [tr]
+        [td][b]Rain[/b][/td]
+        [td]Raining++[/td]
+        [td]Intensity > 0.7[/td]
+    [/tr]
+    [tr]
+        [td][/td]
+        [td]Raining+[/td]
+        [td]Intensity > 0.3[/td]
+    [/tr]
+    [tr]
+        [td][/td]
+        [td]Raining[/td]
+        [td]Intensity <= 0.3[/td]
+    [/tr]
+    [tr]
+        [td][b]Cloud[/b][/td]
+        [td]Cloudy+[/td]
+        [td]Intensity > 0.6[/td]
+    [/tr]
+    [tr]
+        [td][/td]
+        [td]Cloudy[/td]
+        [td]Intensity > 0.3[/td]
+    [/tr]
+    [tr]
+        [td][b]Fog[/b][/td]
+        [td]Foggy+[/td]
+        [td]Intensity > 0.5[/td]
+    [/tr]
+    [tr]
+        [td][/td]
+        [td]Foggy[/td]
+        [td]Intensity > 0.2[/td]
+    [/tr]
+    [tr]
+        [td][b]Wind[/b][/td]
+        [td]Windy+[/td]
+        [td]Speed > 40[/td]
+    [/tr]
+    [tr]
+        [td][/td]
+        [td]Windy[/td]
+        [td]Speed > 20[/td]
+    [/tr]
+[/table]
 
 [h2]Workshop Details[/h2]
 Workshop ID: 3676979895
