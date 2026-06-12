@@ -1,4 +1,4 @@
-print('[MBGWorldInfo] loaded')
+print('[MBGWorldInfo] Successfully Loaded')
 
 -- World Age
 local function getWorldAge()
@@ -96,25 +96,6 @@ local function getWeather()
 	return weather
 end
 
-local function getKillCount()
-    local total = 0
-	
-	local data = ModData.get('KillCount')
-    if not data then return total end
-
-    for username, stats in pairs(data) do
-        if type(stats) == 'table' then
-            local gk = stats.gk or 0
-            local fk = stats.fk or 0
-            local ck = stats.ck or 0
-
-            total = total + gk + fk + ck
-        end
-    end
-
-    return total
-end
-
 -- Start Printing
 local lastPrintTime = os.time()
 local interval = 10
@@ -130,10 +111,8 @@ Events.OnTick.Add(function()
 	local worldAge = getWorldAge()
 	local dateTime = getDateTime()
 	local weather = getWeather()
-	local killCount = getKillCount()
 	
 	print(string.format('[MBGWorldInfo] World Age: %d', worldAge))
 	print(string.format('[MBGWorldInfo] Date Time: %s', dateTime))
 	print(string.format('[MBGWorldInfo] Weather: %s', weather))
-	print(string.format('[MBGWorldInfo] Kill Count: %d', killCount))
 end)
