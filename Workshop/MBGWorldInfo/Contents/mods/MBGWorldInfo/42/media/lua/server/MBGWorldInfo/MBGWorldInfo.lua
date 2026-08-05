@@ -29,28 +29,6 @@ local function getDateTime()
 	return dateTime
 end
 
--- Electricity Status
-local function electricityStatus()
-    local electricityStatus = 'On'
-	
-	if ImmersiveBlackouts_isBlackout then
-		electricityStatus = 'Off'
-	end
-	
-	return electricityStatus
-end
-
--- Water Status
-local function waterStatus()
-    local waterStatus = 'On'
-	
-	if ImmersiveBlackouts_isWaterShut then
-		waterStatus = 'Off'
-	end
-	
-	return waterStatus
-end
-
 -- Weather
 local function getWeather()
     local climateInstance = ClimateManager.getInstance()
@@ -133,12 +111,10 @@ Events.OnTick.Add(function()
 	local worldAge = getWorldAge()
 	local dateTime = getDateTime()
 	local weather = getWeather()
-	local electricityStatus = electricityStatus()
-	local waterStatus = waterStatus()
 	
 	print(string.format('[MBGWorldInfo] World Age: %d', worldAge))
 	print(string.format('[MBGWorldInfo] Date Time: %s', dateTime))
 	print(string.format('[MBGWorldInfo] Weather: %s', weather))
-	print(string.format('[MBGWorldInfo] Electricity: %s', electricityStatus))
-	print(string.format('[MBGWorldInfo] Water: %s', waterStatus))
+	print(string.format('[MBGWorldInfo] Blackout: %s', tostring(ImmersiveBlackouts_isBlackout)))
+	print(string.format('[MBGWorldInfo] Water Shut: %s', tostring(ImmersiveBlackouts_isWaterShut)))
 end)
