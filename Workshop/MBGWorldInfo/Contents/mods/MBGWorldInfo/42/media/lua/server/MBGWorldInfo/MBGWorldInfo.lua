@@ -31,24 +31,24 @@ end
 
 -- Electricity Status
 local function electricityStatus()
-    local isBlackout = 'On'
+    local electricityStatus = 'On'
 	
 	if ImmersiveBlackouts_isBlackout then
-		isBlackout = 'Off'
+		electricityStatus = 'Off'
 	end
 	
-	return string.format('Electricity: %s', isBlackout)
+	return electricityStatus
 end
 
 -- Water Status
 local function waterStatus()
-    local isWaterShut = 'On'
+    local waterStatus = 'On'
 	
 	if ImmersiveBlackouts_isWaterShut then
-		isWaterShut = 'Off'
+		waterStatus = 'Off'
 	end
 	
-	return string.format('Water: %s', isWaterShut)
+	return waterStatus
 end
 
 -- Weather
